@@ -115,3 +115,6 @@ packag*.json
 # docker
 *.env
 docker*.*
+
+# other
+note*.md
