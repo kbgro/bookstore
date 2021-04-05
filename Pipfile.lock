@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2d8bc311cd27d920c82bde677e8d46424a0ab2494d95c0e6d67fc64c4d9de7c5"
+            "sha256": "0f110ac8607a73fa7746a09745ce610eece27e6afaddafc9253c8c3c0fcf2218"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -120,6 +120,14 @@
             ],
             "index": "pypi",
             "version": "==1.11.2"
+        },
+        "django-environ": {
+            "hashes": [
+                "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde",
+                "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"
+            ],
+            "index": "pypi",
+            "version": "==0.4.5"
         },
         "idna": {
             "hashes": [
@@ -385,7 +393,7 @@
                 "sha256:0a943902919f65c5684ac4e0154b1ad4fac6dcaa5d9f3426b732f1c8b5419be6",
                 "sha256:2bb1680aad211e3c9944dbce1d4ba09a989f04e238296c87fe2139faa26d655d"
             ],
-            "markers": "python_version >= '3.6' and python_version < '4.0'",
+            "markers": "python_version >= '3.6' and python_version < '4'",
             "version": "==5.8.0"
         },
         "lazy-object-proxy": {

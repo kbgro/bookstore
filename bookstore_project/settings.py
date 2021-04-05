@@ -1,17 +1,23 @@
 import os
 
+import environ
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env = environ.Env(DEBUG=(bool, False))
+
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get("DEBUG", default=0))
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = []
 
@@ -69,18 +75,8 @@ WSGI_APPLICATION = "bookstore_project.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "books",
-        "USER": "postgres",
-        "PASSWORD": os.environ.get("DJANGO_DB_PASSWORD"),
-        "HOST": "localhost",
-        "PORT": 5432,
-    }
-}
-
+# Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
+DATABASES = {"default": env.db()}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -157,7 +153,7 @@ AUTHENTICATION_BACKENDS = (
 
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_PORT = os.environ.get("EMAIL_PORT")
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
 
 DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
