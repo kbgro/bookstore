@@ -17,6 +17,7 @@ class Book(models.Model):
     class Meta:
         verbose_name = _("book")
         verbose_name_plural = _("books")
+        permissions = [("special_status", "Can read all books")]
 
     def __str__(self):
         return self.title
