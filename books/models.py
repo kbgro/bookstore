@@ -12,6 +12,7 @@ class Book(models.Model):
     title = models.CharField(_("Title"), max_length=200)
     author = models.CharField(_("Author"), max_length=200)
     price = models.DecimalField(_("Price"), max_digits=6, decimal_places=2)
+    cover = models.ImageField(upload_to="covers/", blank=True)
 
     class Meta:
         verbose_name = _("book")
