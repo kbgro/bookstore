@@ -1,3 +1,16 @@
-h1{
-  color: red;
+.text-color-brand {
+  color: #ec6611 !important;
+}
+
+a.auth-links {
+  text-decoration: none !important;
+}
+
+.special-card {
+  background-color: #fafafa;
+  opacity: .9;
+}
+
+.books-div .card-body {
+  background-color: #fdc390;
 }

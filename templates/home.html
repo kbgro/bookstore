@@ -2,20 +2,21 @@
 
 {% load static %}
 
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/head.css' %}">
+{% endblock head %}
+
 {% block title %}
   Home
 {% endblock title %}
 
 {% block content %}
-  <h1 class="">Homepage</h1>
-  <form class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}" method="get">
-    <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-  </form>
+  <div class="home bg-image" >
+    <div class="jumbotron text-center mt-5">
+      <h1 class="display-4 "><span class="free text-color-brand ">Free</span> 7 day Trial</h1>
+      <p class="lead my-4">Join to access books in our collection.</p>
+      <a class="btn btn-primary btn-lg" href="{% url 'account_signup' %}" role="button">Get Access Now</a>
+    </div>
+  </div>
 
-  <img class="bookcover" src="{% static 'images/won.png' %}" height="34">
-  {% if user.is_authenticated %}
-    Hi {{ user.email }}!
-  {% else %}
-    <p>You are not logged in</p>
-  {% endif %}
 {% endblock content %}

@@ -1,23 +1,43 @@
 {% extends '_base.html' %}
 
+{% load static %}
+
 {% block title %}{{ book.title }}{% endblock title %}
 
 {% block content %}
-<div class="book-detail">
-
-  {% if book.cover %}
-    <img class="bookcover" src="{{ book.cover.url}}" alt="{{ book.title }}">
-  {% endif %}
-  <h2><a href="">{{ book.title }}</a></h2>
-  <p>Author: {{ book.author }}</p>
-  <p>Price: $ {{ book.price }}</p>
-  <div>
-    <h3>Reviews</h3>
-    <ul>
-      {% for review in book.reviews.all %}
-      <li>{{ review.review }} ({{ review.author }})</li>
-      {% endfor %}
-    </ul>
+  <div class="book-detail mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        {% if  book.cover %}
+          <img class="img-fluid" src="{{ book.cover.url }}" alt="{{ book.title }}">
+        {% else %}
+          <img src="{% static 'images/nobook.jpeg' %}" class="card-img-top" alt="no book cover">
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        <h2><a href="">{{ book.title }}</a></h2>
+        <p>Author: {{ book.author }}</p>
+        <p>Price: $ {{ book.price }}</p>
+        <div>
+          <h3>Reviews</h3>
+          <ul>
+            {% for review in book.reviews.all %}
+              <li>{{ review.review }} ({{ review.author }})</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 {% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script>
+    $(document).ready(function () {
+      document.body.style.backgroundImage='none';
+      console.log("ready!");
+    });
+  </script>
+   <script src="{% static 'js/base.js' %}"></script>
+{% endblock javascript %}

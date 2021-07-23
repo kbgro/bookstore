@@ -1,33 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{% url 'home' %}">Bookstore</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+{% load crispy_forms_tags %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand text-color-brand " href="{% url 'home' %}">Bookstore</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-      </li>
+    <ul class="navbar-nav mr-auto ">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'book_list' %}">Books</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'about' %}">About</a>
       </li>
+      <form class="form-inline mt-2 mt-md-0 ml-2" action="{% url 'search_results' %}" method="get">
+        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      </form>
     </ul>
     <ul class="navbar-nav">
       {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link btn btn-sm btn-outline-success mx-1" href="{% url 'account_login' %}">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-sm btn-outline-primary mx-1" href="{% url 'account_signup' %}">Sign Up</a>
-      </li>
+        <li class="nav-item">
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-danger" type="submit">Log Out</button>
+          </form>
+        </li>
       {% endif %}
     </ul>
   </div>
