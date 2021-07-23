@@ -1,3 +1,12 @@
-h1{
-  color: red;
+body {
+  background-size: cover;
+  background: #fff3cd url("../images/back.jpg") no-repeat center center;
+}
+
+.text-color-brand {
+  color: #ec6611 !important;
+}
+
+a.auth-links{
+  text-decoration: none !important;
 }
