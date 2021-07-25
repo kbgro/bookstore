@@ -1,16 +1,34 @@
+body {
+  background-color: #F4F5FC !important;
+}
+
 .text-color-brand {
   color: #ec6611 !important;
 }
 
+.bg-brand {
+  background-color: #ec6611 !important;
+}
+
+
 a.auth-links {
   text-decoration: none !important;
+  cursor: pointer;
 }
 
 .special-card {
-  background-color: #fafafa;
+  background-color: #454242;
   opacity: .9;
 }
 
 .books-div .card-body {
   background-color: #fdc390;
+}
+
+#book-detail {
+  height: 100vh;
+}
+
+.price {
+  font-size: 1.5em;
 }
