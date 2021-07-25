@@ -1,0 +1,9 @@
+{% extends "_base.html" %}
+
+{% block title %}Forbidden (403){% endblock %}
+
+{% block content %}
+  <div class="jumbotron my-5">
+    <p>{% if exception %}{{ exception }}{% else %}You're not allowed to access this Book.{% endif %}</p>
+  </div>
+{% endblock content %}
