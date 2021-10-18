@@ -11,6 +11,7 @@ class BookListView(LoginRequiredMixin, ListView):
     template_name = "books/book_list.html"
     context_object_name = "book_list"
     login_url = "account_login"
+    paginate_by = 20
 
 
 class BookDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
