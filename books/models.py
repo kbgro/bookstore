@@ -11,8 +11,11 @@ class Book(models.Model):
     id = models.UUIDField(_("Id"), primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(_("Title"), max_length=200)
     author = models.CharField(_("Author"), max_length=200)
+    category = models.CharField(_("Category"), max_length=200)
+    description = models.TextField(_("Description"))
     price = models.DecimalField(_("Price"), max_digits=6, decimal_places=2)
     cover = models.ImageField(upload_to="covers/", blank=True)
+    image_url = models.URLField(_("Image URL"), blank=True)
 
     class Meta:
         verbose_name = _("book")

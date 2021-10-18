@@ -19,7 +19,9 @@
     <div class="books-div d-flex flex-wrap justify-content-between">
       {% for book in book_list %}
         <div class="card m-4" style="width: 18rem;">
-          {% if  book.cover %}
+          {% if  book.image_url %}
+            <img class="bookcover" src="{{ book.image_url }}" alt="{{ book.title }}">
+          {% elif  book.cover %}
             <img class="bookcover" src="{{ book.cover.url }}" alt="{{ book.title }}">
           {% else %}
             <img src="{% static 'images/nobook.jpeg' %}" class="card-img-top" alt="no book cover">
