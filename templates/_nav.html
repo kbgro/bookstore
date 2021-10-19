@@ -22,14 +22,14 @@
     <ul class="navbar-nav">
       {% if user.is_authenticated %}
         <li class="nav-item dropdown">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          <div class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">
             <i class="fas fa-shopping-cart fa-1x"></i>
             <span
               id="cart-items"
               class="badge badge-pill bg-color-brand font-weight-bolder counter counter-lg"
             >0</span>&nbsp;&nbsp;
-          </a>
+          </div>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <div id="cart-dropdown-items"></div>
             {#            <div class="d-flex justify-content-between align-items-center mb-1 dropdown-item">#}
@@ -52,7 +52,7 @@
             <a class="dropdown-item" href="#">
               <div class="d-flex justify-content-between align-items-center mb-1">
                 <div class="cart-col">
-                  <button class="btn btn-primary btn-sm font-weight-bolder btn-danger">
+                  <button id="clear-cart-btn" class="btn btn-primary btn-sm font-weight-bolder btn-danger">
                     Clear Cart <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>

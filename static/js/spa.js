@@ -18,7 +18,6 @@ class Cart {
     this.#orders.push(product)
     this.#amount += product.price;
     this.#amount = this.roundAmount(this.#amount);
-    $("#cart-items").html(this.#orders.length)
     return true;
   }
 
@@ -38,6 +37,11 @@ class Cart {
 
   clear() {
     this.#orders = [];
+    this.#amount = 0;
+  }
+
+  length() {
+    return this.#orders.length;
   }
 }
 
