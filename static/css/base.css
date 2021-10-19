@@ -13,6 +13,12 @@ body {
   color: var(--main) !important;
 }
 
+.bg-color-brand {
+  font-size: .2rem;
+  color: white !important;
+  background-color: var(--main) !important;
+}
+
 .bg-brand {
   background-color: var(--main) !important;
 }
@@ -28,7 +34,7 @@ a.auth-links {
   opacity: .9;
 }
 
-.special-card .btn, .page-item.active, .page-item.active > .page-link {
+.special-card .btn, .page-item.active, .page-item.active > .page-link, .btn-product {
   background-color: var(--main) !important;
   border-color: var(--main) !important;
 }
@@ -38,10 +44,6 @@ a.auth-links {
   border-color: var(--main-dark);
 }
 
-.special-card .btn:hover {
-  background-color: var(--main-dark) !important;
-  border-color: var(--main-dark);
-}
 
 .books-div {
   display: grid;
@@ -81,4 +83,29 @@ a.auth-links {
   padding-top: 4px;
   margin-left: 4px;
   color: white;
+}
+
+.book-cart {
+  color: var(--main) !important;
+}
+
+.counter.counter-lg {
+  position: relative;
+  top: -12px !important;
+  left: -6px !important;
+}
+
+.sec {
+  position: relative;
+  /*right: -13px;*/
+  /*top: -22px;*/
+}
+
+#cart-dropdown-items .col-6, #cart-dropdown-items .btn {
+  font-size: small;
+}
+
+
+.dropdown-menu {
+  width: 316px !important;
 }

@@ -5,16 +5,14 @@
 {% block title %}Books{% endblock title %}
 
 {% block content %}
-  <div class="my-2">
-    <div class="card-header text-color-brand "><h2>All Books</h2></div>
-  </div>
-{#  {% if not perms.books.special_status %}#}
-{#    <a href="{% url 'orders' %}" class="btn btn-success mb-1">Purchase All Books</a>#}
-{#  {% endif %}#}
-  <div class="special-card shadow-lg pl-3">
+  <div class="my-2 pl-3"><h2 class="text-color-brand">All Books</h2></div>
+  {#  {% if not perms.books.special_status %}#}
+  {#    <a href="{% url 'orders' %}" class="btn btn-success mb-1">Purchase All Books</a>#}
+  {#  {% endif %}#}
+  <div class="special-card shadow-lg pl-3 pb-2">
     <div class="books-div mb-2">
       {% for book in book_list %}
-        <div class="card m-2" style="width: 14rem; border-color: #343a40">
+        <div class="book-product card m-2" style="width: 14rem; border-color: #343a40">
           {#          <div class="" style="border: 2px grey solid; height: 32vh">#}
           {% if  book.image_url %}
             <img class="bookcover card-img-top img-fluid" src="{{ book.image_url }}" alt="{{ book.title }}">
@@ -28,12 +26,22 @@
           <div class="card-book-body py-2">
             {% if not perms.books.special_status %}
               <div class="d-flex justify-content-between">
-              <h6 class="card-book-title"><a class="auth-links">{{ book.title|truncatechars:15 }}</a></h6>
-              <a href="{% url 'orders' %}" class="btn btn-primary btn-sm mr-2 font-weight-light">$ {{ book.price }}</a>
+                <h6 class="card-book-title"><a class="auth-links">{{ book.title|truncatechars:15 }}</a></h6>
+                {#                <a href="{% url 'orders' %}"#}
+                {#                   class="btn btn-primary btn-sm mr-2 font-weight-light">$ {{ book.price }}</a>#}
+                <form action="" class="product-book-add-cart-form" method="post">
+                  <input type="hidden" name="id" value="{{ book.id }}">
+                  <input type="hidden" name="price" value="{{ book.price }}">
+                  <input type="hidden" name="title" value="{{ book.title }}">
+                  <button type="submit" class="btn btn-primary btn-sm mr-2 font-weight-light">
+                    $ {{ book.price }}
+                  </button>
+                </form>
               </div>
             {% else %}
               <h6 class="card-book-title">
-                <a class="auth-links font-weight-light" href="{{ book.get_absolute_url }}">{{ book.title|truncatechars:24 }}</a>
+                <a class="auth-links font-weight-light"
+                   href="{{ book.get_absolute_url }}">{{ book.title|truncatechars:24 }}</a>
               </h6>
             {% endif %}
           </div>
