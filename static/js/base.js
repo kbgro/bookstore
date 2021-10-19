@@ -1,4 +1,6 @@
 import cart from "./spa.js";
+import {placeOrder} from "./api.js";
+
 
 function process_product_form(productForm) {
   return {
@@ -61,6 +63,7 @@ $(function () {
     let cart_product_form_class = ".remove-product-cart-btn";
     let clear_cart_btn = "#clear-cart-btn";
     let drop_down_items = "#cart-dropdown-items";
+    let place_order_form = "#place-order-form";
 
     // add item to cart
     $(form_class).click(function (e) {
@@ -81,6 +84,13 @@ $(function () {
       $("#cart-items").html(cart.length())
       $("#cart-total-amount").html(`$ ${cart.total()}`);
       console.log("Total: ", cart.total());
+    })
+
+    $(place_order_form).click(function (e) {
+      e.preventDefault();
+      let token = $(this).find('input[name=csrfmiddlewaretoken]:eq(0)').val();
+      console.log(token, cart.items());
+      placeOrder(cart, token);
     })
   }
 )

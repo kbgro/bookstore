@@ -43,6 +43,14 @@ class Cart {
   length() {
     return this.#orders.length;
   }
+
+  /**
+   * Returns cart items array
+   * @returns {*[]}
+   */
+  items() {
+    return this.#orders;
+  }
 }
 
 const instance = new Cart()

@@ -23,7 +23,7 @@
       {% if user.is_authenticated %}
         <li class="nav-item dropdown">
           <div class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-             aria-expanded="false">
+               aria-expanded="false">
             <i class="fas fa-shopping-cart fa-1x"></i>
             <span
               id="cart-items"
@@ -57,7 +57,10 @@
                   </button>
                 </div>
                 <div class="cart-col">
-                  <button class="btn btn-primary btn-sm font-weight-bolder btn-success">Place Order</button>
+                  <form id="place-order-form" class="form" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary btn-sm font-weight-bolder btn-success">Place Order</button>
+                  </form>
                 </div>
               </div>
             </a>
