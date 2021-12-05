@@ -1,16 +1,111 @@
-.text-color-brand {
-  color: #ec6611 !important;
+:root {
+  --main: #ec6611;
+  --secondary: #ffffff;
+
+  --main-dark: #a5470b;
 }
+
+body {
+  background-color: #343a40 !important;
+}
+
+.text-color-brand {
+  color: var(--main) !important;
+}
+
+.bg-color-brand {
+  font-size: .2rem;
+  color: white !important;
+  background-color: var(--main) !important;
+}
+
+.bg-brand {
+  background-color: var(--main) !important;
+}
+
 
 a.auth-links {
   text-decoration: none !important;
+  cursor: pointer;
 }
 
 .special-card {
-  background-color: #fafafa;
+  background-color: #32383e;
   opacity: .9;
 }
 
-.books-div .card-body {
-  background-color: #fdc390;
+.special-card .btn, .page-item.active, .page-item.active > .page-link, .btn-product {
+  background-color: var(--main) !important;
+  border-color: var(--main) !important;
+}
+
+.special-card .btn:hover {
+  background-color: var(--main-dark) !important;
+  border-color: var(--main-dark);
+}
+
+
+.books-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+#book-detail {
+  height: 100vh;
+}
+
+.price {
+  font-size: 1.5em;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 240px !important;
+  object-fit: fill;
+}
+
+.card-book-body {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.card-book-title a {
+  color: white !important;
+}
+
+.card-book-title a:hover {
+  color: #8787f8 !important;
+}
+
+.card-book-title {
+  padding-top: 4px;
+  margin-left: 4px;
+  color: white;
+}
+
+.book-cart {
+  color: var(--main) !important;
+}
+
+.counter.counter-lg {
+  position: relative;
+  top: -12px !important;
+  left: -6px !important;
+}
+
+.sec {
+  position: relative;
+  /*right: -13px;*/
+  /*top: -22px;*/
+}
+
+#cart-dropdown-items .col-6, #cart-dropdown-items .btn {
+  font-size: small;
+}
+
+
+.dropdown-menu {
+  width: 316px !important;
 }

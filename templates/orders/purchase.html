@@ -3,16 +3,25 @@
 {% block title %}Orders{% endblock title %}
 
 {% block content %}
-<h1>Orders Page</h1>
-<p>Buy for $39.00</p>
+  <h1 class="text-center my-1">Orders Page</h1>
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <div class="card ">
+        <div class="card-header bg-brand">Purchase All Book</div>
+        <div class="card-body">
+          <p>Buy for <span class="btn btn-primary btn-sm font-weight-bolder">$ 39.00</span></p>
+          <form action="{% url 'charge' %}" method="post">
+            {% csrf_token %}
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="{{ stripe_key }}"
+                    data-description="All Books"
+                    data-amount="3900"
+                    data-locale="auto">
+            </script>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<form action="{% url 'charge' %}" method="post">
-  {% csrf_token %}
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="{{ stripe_key }}"
-    data-description="All Books"
-    data-amount="3900"
-    data-locale="auto">
-  </script>
-</form>
 {% endblock content %}

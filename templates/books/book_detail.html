@@ -2,10 +2,14 @@
 
 {% load static %}
 
+{% block head %}
+  <link rel="stylesheet" href="{% static 'css/review.css' %}">
+{% endblock head %}
+
 {% block title %}{{ book.title }}{% endblock title %}
 
 {% block content %}
-  <div class="book-detail mt-5">
+  <div id="book-detail" class="mt-5">
     <div class="row">
       <div class="col-md-6">
         {% if  book.cover %}
@@ -14,17 +18,41 @@
           <img src="{% static 'images/nobook.jpeg' %}" class="card-img-top" alt="no book cover">
         {% endif %}
       </div>
-      <div class="col-md-6">
-        <h2><a href="">{{ book.title }}</a></h2>
-        <p>Author: {{ book.author }}</p>
-        <p>Price: $ {{ book.price }}</p>
+      <div class="col-md-6 px-4">
+        <h2><a class="auth-links" href="">{{ book.title }}</a></h2>
+        <p>Author: <span class="font-italic">{{ book.author }}</span></p>
+        <hr>
+        <p class="font-weight-bolder price text-color-brand">$ {{ book.price }}</p>
+        <hr>
         <div>
           <h3>Reviews</h3>
-          <ul>
-            {% for review in book.reviews.all %}
-              <li>{{ review.review }} ({{ review.author }})</li>
-            {% endfor %}
-          </ul>
+          <div class="add-review-container">
+            <form method="post" action="{{ book.get_absolute_url }}">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="reviewInput" class="">Add your review</label>
+                <textarea class="form-control" name="review" id="reviewInput" rows="3" minlength="10"></textarea>
+              </div>
+              <input type="hidden" name="next" value="{{ book.get_absolute_url }}">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="rb-container">
+            <ul class="rb w-100">
+              {% for review in book.reviews.all %}
+                <li class="rb-item">
+                  <div class="card w-100  mb-0">
+                    <div class="card-body pt-1">
+                      <div class="timestamp">
+                        by <span class="font-italic font-weight-bolder">{{ review.author }}</span>
+                      </div>
+                      <div class="item-title">{{ review.review }}</div>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -33,11 +61,4 @@
 
 {% block javascript %}
   {{ block.super }}
-  <script>
-    $(document).ready(function () {
-      document.body.style.backgroundImage='none';
-      console.log("ready!");
-    });
-  </script>
-   <script src="{% static 'js/base.js' %}"></script>
 {% endblock javascript %}
