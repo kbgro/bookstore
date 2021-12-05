@@ -1,3 +1,2 @@
-release: python manage.py migrate
-release: python manage.py loaddata data.json
+release: ./release-tasks.sh
 web: gunicorn bookstore_project.wsgi --log-file -
